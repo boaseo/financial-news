@@ -37,6 +37,18 @@ export default function CategoryNav() {
               <span>{cat.label}</span>
             </Link>
           ))}
+          <div className="flex-shrink-0 w-px bg-gray-200 mx-1" />
+          <Link
+            href="/bookmarks"
+            className={`flex-shrink-0 flex items-center gap-1.5 px-4 py-2 rounded-full text-sm font-medium transition-colors ${
+              isActive('/bookmarks')
+                ? 'bg-yellow-400 text-white'
+                : 'text-gray-600 hover:bg-gray-100'
+            }`}
+          >
+            <span>🔖</span>
+            <span>저장됨</span>
+          </Link>
         </div>
       </div>
     </nav>

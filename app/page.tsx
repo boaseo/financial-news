@@ -3,12 +3,12 @@ export const revalidate = 3600;
 
 import { Suspense } from 'react';
 import { fetchHeadlinesByAllCategories } from '@/lib/newsapi';
-import NewsGrid from '@/components/news/NewsGrid';
+import PaginatedNewsGrid from '@/components/news/PaginatedNewsGrid';
 import { NewsGridSkeleton } from '@/components/news/NewsCardSkeleton';
 
 async function AllNews() {
   const articles = await fetchHeadlinesByAllCategories(15);
-  return <NewsGrid articles={articles} emptyMessage="뉴스를 불러오지 못했습니다. API 키를 확인하세요." />;
+  return <PaginatedNewsGrid articles={articles} emptyMessage="뉴스를 불러오지 못했습니다. API 키를 확인하세요." />;
 }
 
 export default function HomePage() {

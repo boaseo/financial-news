@@ -7,7 +7,7 @@ import type { Metadata } from 'next';
 import { fetchNewsByCategory } from '@/lib/newsapi';
 import { CATEGORY_MAP, isValidCategory } from '@/lib/categories';
 import { CategoryId } from '@/types/news';
-import NewsGrid from '@/components/news/NewsGrid';
+import PaginatedNewsGrid from '@/components/news/PaginatedNewsGrid';
 import { NewsGridSkeleton } from '@/components/news/NewsCardSkeleton';
 
 interface PageProps {
@@ -19,14 +19,14 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const cat = CATEGORY_MAP[category];
   if (!cat) return {};
   return {
-    title: `${cat.label} 뉴스 | 파이낸셜 허브`,
+    title: `${cat.label} 뉴스 | VIVID FINANCIAL NEWS`,
     description: `${cat.label} 관련 최신 금융 뉴스를 확인하세요.`,
   };
 }
 
 async function CategoryNews({ category }: { category: CategoryId }) {
   const articles = await fetchNewsByCategory({ category, pageSize: 100 });
-  return <NewsGrid articles={articles} emptyMessage={`${CATEGORY_MAP[category].label} 뉴스를 불러오지 못했습니다.`} showCategory={false} />;
+  return <PaginatedNewsGrid articles={articles} emptyMessage={`${CATEGORY_MAP[category].label} 뉴스를 불러오지 못했습니다.`} showCategory={false} />;
 }
 
 export default async function CategoryPage({ params }: PageProps) {
