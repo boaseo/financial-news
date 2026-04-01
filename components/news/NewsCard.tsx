@@ -29,7 +29,7 @@ export default function NewsCard({ article }: NewsCardProps) {
         {article.title}
       </h3>
       {article.description && (
-        <p className="text-xs text-gray-500 line-clamp-2 leading-relaxed">{article.description}</p>
+        <p className="text-xs text-gray-500 leading-relaxed">{article.description}</p>
       )}
       <span className="text-xs text-gray-400">{article.source}</span>
     </a>
