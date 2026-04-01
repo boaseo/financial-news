@@ -79,12 +79,6 @@ export const CATEGORY_MAP: Record<string, Category> = Object.fromEntries(
   CATEGORIES.map((c) => [c.id, c])
 );
 
-export function buildQueryString(categoryId: string): string {
-  const category = CATEGORY_MAP[categoryId];
-  if (!category) throw new Error(`Unknown category: ${categoryId}`);
-  // 네이버 검색 API OR 연산자: |
-  return category.keywords.slice(0, 8).join('|');
-}
 
 export function isValidCategory(id: string): id is CategoryId {
   return id in CATEGORY_MAP;
