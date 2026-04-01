@@ -5,7 +5,7 @@ import Header from '@/components/layout/Header';
 import CategoryNav from '@/components/layout/CategoryNav';
 
 export const metadata: Metadata = {
-  title: '파이낸셜 허브 - 금융 뉴스 한눈에',
+  title: 'VIVID FINANCIAL NEWS',
   description: '주식/증시, 암호화폐, 부동산, 거시경제 등 금융 분야 최신 뉴스를 테마별로 확인하세요.',
 };
 
