@@ -58,9 +58,12 @@ export async function fetchNewsByCategory(options: FetchNewsOptions): Promise<Ne
 
   const data = await res.json();
 
+  const cutoff = Date.now() - 30 * 24 * 60 * 60 * 1000;
+
   return (data.items as RawNaverNewsItem[])
-    .filter((item) => item.title && item.link)
-    .map((item) => normalizeArticle(item, category));
+    .filter((item) => item.title && item.link && new Date(item.pubDate).getTime() >= cutoff)
+    .map((item) => normalizeArticle(item, category))
+    .sort((a, b) => new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime());
 }
 
 export async function fetchHeadlinesByAllCategories(perCategory = 5): Promise<NewsArticle[]> {
