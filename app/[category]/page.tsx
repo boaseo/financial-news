@@ -26,7 +26,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
 async function CategoryNews({ category }: { category: CategoryId }) {
   const articles = await fetchNewsByCategory({ category, pageSize: 100 });
-  return <NewsGrid articles={articles} emptyMessage={`${CATEGORY_MAP[category].label} 뉴스를 불러오지 못했습니다.`} />;
+  return <NewsGrid articles={articles} emptyMessage={`${CATEGORY_MAP[category].label} 뉴스를 불러오지 못했습니다.`} showCategory={false} />;
 }
 
 export default async function CategoryPage({ params }: PageProps) {

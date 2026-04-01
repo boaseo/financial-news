@@ -4,11 +4,13 @@ import NewsCard from './NewsCard';
 interface NewsGridProps {
   articles: NewsArticle[];
   emptyMessage?: string;
+  showCategory?: boolean;
 }
 
 export default function NewsGrid({
   articles,
   emptyMessage = '뉴스를 불러오지 못했습니다.',
+  showCategory = true,
 }: NewsGridProps) {
   if (articles.length === 0) {
     return (
@@ -22,7 +24,7 @@ export default function NewsGrid({
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2">
       {articles.map((article) => (
-        <NewsCard key={article.id} article={article} />
+        <NewsCard key={article.id} article={article} showCategory={showCategory} />
       ))}
     </div>
   );

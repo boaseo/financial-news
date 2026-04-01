@@ -4,9 +4,10 @@ import { formatRelativeTime } from '@/lib/utils';
 
 interface NewsCardProps {
   article: NewsArticle;
+  showCategory?: boolean;
 }
 
-export default function NewsCard({ article }: NewsCardProps) {
+export default function NewsCard({ article, showCategory = true }: NewsCardProps) {
   const cat = CATEGORY_MAP[article.category];
   const timeAgo = formatRelativeTime(article.publishedAt);
 
@@ -18,9 +19,11 @@ export default function NewsCard({ article }: NewsCardProps) {
       className="group flex flex-col gap-1.5 px-4 py-3.5 bg-white border border-gray-200 rounded-lg hover:border-gray-400 hover:shadow-sm transition-all duration-150"
     >
       <div className="flex items-center gap-2">
-        <span className={`text-xs font-semibold px-2 py-0.5 rounded-full ${cat.bgColor} ${cat.color}`}>
-          {cat.icon} {cat.label}
-        </span>
+        {showCategory && (
+          <span className={`text-xs font-semibold px-2 py-0.5 rounded-full ${cat.bgColor} ${cat.color}`}>
+            {cat.icon} {cat.label}
+          </span>
+        )}
         <time className="text-xs text-gray-400 ml-auto flex-shrink-0" dateTime={article.publishedAt}>
           {timeAgo}
         </time>
